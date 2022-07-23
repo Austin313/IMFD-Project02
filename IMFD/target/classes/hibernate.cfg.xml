@@ -5,9 +5,9 @@
     <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://$DB_Home/forHibernate</property>
-        <property name="connection.username">postgres</property>
-        <property name="connection.password">postgres!23</property>
+        <property name="connection.url">test</property>
+        <property name="connection.username">test</property>
+        <property name="connection.password">test</property>
         
          <!-- Select our SQL dialect -->
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -17,9 +17,7 @@
         <property name="current_session_context_class">thread</property>
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
-        
-       <!--  <mapping resource="Student.hbm.xml"/> -->
-       <mapping class="com.revature.hibernate.model.Student"/>
+        <mapping class="com.project2.imfd.test.Test"/>
         
     </session-factory>
     </hibernate-configuration>
