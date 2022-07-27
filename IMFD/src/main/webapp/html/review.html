@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>review</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="home.component.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -19,14 +19,14 @@
 
 <header class="header">
 
-    <a href="home.html" class="logo"> <i class="fas fa-shopping-basket"></i> FoodKart</a>
+    <a href="home.html" class="logo"> <i class="fas fa-shopping-basket"></i> FoodKart  </a>
 
     <nav class="navbar">
-        <a href="home.component.html">home</a>
-        <a [routerLink]="IMFD/src/shop.html">shop</a>
+        <a href="home.html">home</a>
+        <a href="shop.html">shop</a>
         <a href="about.html">about</a>
         <a href="review.html">review</a>
-        <a href="../blog/blog.component.html">blog</a>
+        <a href="blog.html">blog</a>
         <a href="contact.html">contact</a>
     </nav>
 
@@ -45,7 +45,7 @@
     <div class="shopping-cart">
         <div class="box">
             <i class="fas fa-times"></i>
-            <img src="image/cart-1.jpg" alt="">
+            <img src="media/cart-1.jpg" alt="">
             <div class="content">
                 <h3>organic food</h3>
                 <span class="quantity">1</span>
@@ -94,98 +94,65 @@
 
 <!-- header section ends -->
 
-<section class="home">
+<div class="heading">
+    <h1>client's review</h1>
+    <p> <a href="home.html">home >></a> review </p>
+</div>
 
-    <div class="slides-container">
+<section class="info-container">
 
-        <div class="slide active">
-            <div class="content">
-                <span>fresh and organic</span>
-                <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
-            </div>
-            <div class="image">
-                <!--<img src="image/home-img-1.png" alt="">-->
-                <img src="image/FOodKart.png" alt="">
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="content">
-                <span>fresh and organic</span>
-                <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
-            </div>
-            <div class="image">
-                <img src="image/home-img-2.png" alt="">
-            </div>
-        </div>
-
-        <div class="slide">
-            <div class="content">
-                <span>fresh and organic</span>
-                <h3>upto 50% off</h3>
-                <a href="#" class="btn">shop now</a>
-            </div>
-            <div class="image">
-                <img src="image/home-img-3.png" alt="">
-            </div>
-        </div>
-
-    </div>
-
-    <div id="next-slide" class="fas fa-angle-right" onclick="next()"></div>
-    <div id="prev-slide" class="fas fa-angle-left" onclick="next()"></div>
-
-</section>
-
-<section class="banner-container">
-
-    <div class="banner">
-        <img src="image/banner-01.png" alt="">
+    <div class="info">
+        <img src="image/icon-1.png" alt="">
         <div class="content">
-            
-           
+            <h3>fast delivery</h3>
+            <span>within 30 minutes</span>
         </div>
     </div>
 
-    <div class="banner">
-        <img src="image/banner-02.png" alt="">
+    <div class="info">
+        <img src="image/icon-2.png" alt="">
         <div class="content">
-           
-           
+            <h3>24 / 7 available</h3>
+            <span>call us anytime</span>
         </div>
     </div>
 
-    <div class="banner">
-        <img src="image/banner-03.png" alt="">
+    <div class="info">
+        <img src="image/icon-3.png" alt="">
         <div class="content">
-            <span></span>
-            <h3></h3>
-          
+            <h3>easy payments</h3>
+            <span>cash or credits</span>
         </div>
     </div>
 
 </section>
 
+<section class="review">
 
+    <div class="box">
+        <div class="user">
+            <img src="image/pic-1.png" alt="">
+            <div class="info">
+                <h3>John Deo</h3>
+                <span>happy client</span>
+            </div>
+        </div>
+        <p>FoodKart bring fresh organic food to your door!</p>
+    </div>
 
+    <div class="box">
+        <div class="user">
+            <img src="image/pic-2.png" alt="">
+            <div class="info">
+                <h3>Emma Madison</h3>
+                <span>happy client</span>
+            </div>
+        </div>
+        <p>Easy to shop!</p>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+</section>
 
 
 <!-- footer section starts  -->
@@ -237,7 +204,7 @@
 
 </section>
 
-
+<section class="credit">created by <a href="https://freewebsitecode.com/"> Free Website Code </a> | all rights reserved!</section>
 
 <!-- footer section ends -->
 

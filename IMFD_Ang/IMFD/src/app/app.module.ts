@@ -20,7 +20,9 @@ import { ShopComponent } from './components/shop/shop.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    RouterModule.forRoot(
+      appRoutes
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -35,7 +35,7 @@ public class HibernateConnection {
 	            	config.setProperties(prop);
 	            	//add configured annotated classes below, using the following format.
 	            	//config.addAnnotatedClass(com.project2.imfd.test.Test.class);
-	           
+	            	
 	                // Create SessionFactory
 	                sessionFactory = config.buildSessionFactory();
 	            } catch (Exception e) {
