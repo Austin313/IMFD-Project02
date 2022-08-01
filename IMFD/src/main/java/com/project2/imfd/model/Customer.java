@@ -29,14 +29,34 @@ public class Customer implements Serializable{
 	private String address;
 	@Column(nullable=false)
 	private String phoneno;
-
-	public Customer(String firstname, String lastname, String address, String phoneno) {
+	private String username;
+	private String passwordd;
+	/**
+	 * @param customer_id
+	 * @param firstname
+	 * @param lastname
+	 * @param address
+	 * @param phoneno
+	 * @param username
+	 * @param passwordd
+	 */
+	public Customer(Integer customer_id, String firstname, String lastname, String address, String phoneno,
+			String username, String passwordd) {
 		super();
+		this.customer_id = customer_id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.address = address;
 		this.phoneno = phoneno;
+		this.username = username;
+		this.passwordd = passwordd;
 	}
+	
+	/*
+	 * public Customer(String firstname, String lastname, String address, String
+	 * phoneno) { super(); this.firstname = firstname; this.lastname = lastname;
+	 * this.address = address; this.phoneno = phoneno; }
+	 */
 	
 	
 
