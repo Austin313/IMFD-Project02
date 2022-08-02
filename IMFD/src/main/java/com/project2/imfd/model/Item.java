@@ -26,10 +26,10 @@ import lombok.ToString;
 public class Item implements Serializable{
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-Integer itemno;
-String itemname;
-String itemType;
-float itemPrice;
+private Integer itemno;
+private String itemname;
+private String itemType;
+private float itemPrice;
 
 public Item(Integer itemno, String itemname, String itemType, float itemPrice) {
 	super();
