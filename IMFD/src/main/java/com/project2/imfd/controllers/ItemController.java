@@ -30,7 +30,7 @@ public class ItemController {
 	
 	private final ItemService srv;
 	
-	@Autowired
+	
 	public ItemController(ItemService srv) {
 		super();
 		this.srv = srv;

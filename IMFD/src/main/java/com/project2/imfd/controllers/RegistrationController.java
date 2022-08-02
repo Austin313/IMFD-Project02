@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project2.imfd.exceptions.UserExistsException;
 import com.project2.imfd.model.Customer;
-import com.project2.imfd.service.RegistrationService;
+import com.project2.imfd.services.RegistrationService;
 
 @RestController
 public class RegistrationController {
@@ -21,11 +22,10 @@ public class RegistrationController {
 			if (tempusername !=null && !"".equals(tempusername)) {
 				Customer customercheck=service.fetchCustomerByUsername(tempusername);
 				if (customercheck != null) {
-					throw new Exception ("User already exit");
+					throw new UserExistsException("User already exist");
 				}
 			}
-			Customer customerObj =null;
-			customerObj = service.saveCustomer(customer);
-			return customerObj;
+			
+			return service.saveCustomer(customer);
 		}
 }

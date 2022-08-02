@@ -1,4 +1,4 @@
-package com.project2.imfd.service;
+package com.project2.imfd.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
