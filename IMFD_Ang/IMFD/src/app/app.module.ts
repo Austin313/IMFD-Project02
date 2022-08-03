@@ -8,6 +8,9 @@ import { BlogComponent } from './components/blog/blog.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { FormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,14 @@ import { ShopComponent } from './components/shop/shop.component';
     BlogComponent,
     ContactComponent,
     ReviewComponent,
-    ShopComponent
+    ShopComponent,
+    AboutComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(
-      appRoutes
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
