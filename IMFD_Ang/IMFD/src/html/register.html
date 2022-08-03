@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="reg03.css">
+ <style>
+    body{
+  
+        background-color: #bac34e;
+    }
+
+    /**/
+.head{
+  color: #555;
+  font-size: 2rem;  
+  text-align: center;
+}
+
+h1{
+  padding: 10px;
+  margin: 10px;
+}
+
+/*.name{
+  width: calc(100% - 57px);
+    height: 36px;
+    margin: 13px 0 0 -5px;
+    padding-left: 10px; 
+    border-radius: 0 5px 5px 0;
+    border: solid 1px #c0bfbf; 
+    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+    background: #fff; 
+}
+*/
+.main-block label{
+  margin-bottom: 20px;
+  font-size: 16px;
+  vertical-align: middle;
+  border-radius: 50px;
+  /*display: inline-block;
+  width: 200px;*/
+}
+
+
+.main-block input{
+  font: size 10px; 
+  border: #222;
+  background: rgb(225, 231, 218);
+  color:#222;
+  margin-right: 100px;
+  
+}
+
+
+.mainform{
+  display:block;
+ 
+}
+.main-block{
+  padding: 30px;
+  margin: 6% auto;
+ color: #555;
+  box-sizing: content-box;
+ width: 55%;
+ height: 80%;
+  border-radius: 5px; 
+  border: solid 1px rgb(44, 42, 42);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  background: #fffcfc; 
+}
+
+.form-nam{
+ padding: 10px;
+  height: 20;
+  font-size: 16px;
+  
+}
+
+.form-nam label{
+padding: 10px;
+margin: 5px;
+width: 66%;
+border: #333;
+}
+
+.formbasic label{
+width: 30%;
+font-size: 16px;
+padding: 10px;
+margin: 10px;
+border: #333;
+}
+
+.formbasic input {
+ width:200px;
+  color: #555;
+  border: #666;
+  font-size:15px;
+ font-weight:700;
+  padding: 10px;
+  margin: 10px;
+}
+  
+.zipclass{
+
+ margin: 10px;
+ padding: 10px;
+ border: #666;
+ font-size: 16px;
+}
+
+.zipclass label{
+  width: 36%;
+ padding: 10px;
+}
+
+.dropstate{
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+  
+  height: 20;
+}
+
+.dropstate select{
+  background-color: rgb(225, 231, 218);
+}
+
+.dropstate label{
+  width: 36%;
+  padding: 10px;
+}
+
+.chk_box{
+  padding: 0px;
+  margin:0px;
+}
+
+button{
+  width: 10%;
+  height: 50%;
+  padding: 10;
+  margin: 10;
+  border-radius: 5px; 
+  border: none;
+  background: #bac34e; 
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+ 
+}
+
+button:hover{
+   background-color: #3cbd00;
+}
+
+
+.btn-block{
+margin-top: 15px;
+
+}
+
+ </style>   
+ 
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="home.html" class="logo"> <i class="fas fa-shopping-basket"></i> FoodKart </a>
+
+    <nav class="navbar">
+        <a href="home.html">home</a>
+        <a href="shop.html">shop</a>
+        <a href="about.html">about</a>
+        <a href="review.html">review</a>
+        <a href="blog.html">blog</a>
+        <a href="contact.html">contact</a>
+    </nav>
+
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="cart-btn" class="fas fa-shopping-cart"></div>
+        <div id="login-btn" class="fas fa-user"></div>
+    </div>
+
+    <form action="" class="search-form">
+        <input type="search" placeholder="search here..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+    <div class="shopping-cart">
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="image/cart-1.jpg" alt="">
+            <div class="content">
+                <h3>organic food</h3>
+                <span class="quantity">1</span>
+                <span class="multiply">x</span>
+                <span class="price">$18.99</span>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="image/cart-2.jpg" alt="">
+            <div class="content">
+                <h3>organic food</h3>
+                <span class="quantity">1</span>
+                <span class="multiply">x</span>
+                <span class="price">$18.99</span>
+            </div>
+        </div>
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="image/cart-3.jpg" alt="">
+            <div class="content">
+                <h3>organic food</h3>
+                <span class="quantity">1</span>
+                <span class="multiply">x</span>
+                <span class="price">$18.99</span>
+            </div>
+        </div>
+        <h3 class="total"> total : <span>56.97</span> </h3>
+        <a href="#" class="btn">checkout cart</a>
+    </div>
+
+    <form action="" class="login-form">
+        <h3>login form</h3>
+        <input type="email" placeholder="enter your email" class="box">
+        <input type="password" placeholder="enter your password" class="box">
+        <div class="remember">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">remember me</label>
+        </div>
+        <input type="submit" value="login now" class="btn">
+        <p>forget password? <a href="#">click here</a></p>
+        <p>don't have an account? <a href="#">create one</a></p>
+    </form>
+
+</header>
+
+<!-- header section ends -->
+
+
+
+<!--
+<section class="about">
+
+    <div class="image">
+        <img src="image/about-img.jpg" alt="">
+    </div>
+
+    <div class="content">
+        <span>welcome to our shop</span>
+        <h3>Have an account? </h3>
+        <p></p>
+        <a href="#" class="btn">Login</a>
+    </div>
+
+</section>
+-->
+<div class="main-block">
+    
+
+    <form action="/" class="mainform">
+        <div class="head">
+            <h1>Create a New account</h1>
+           <!-- <p> <a href="home.html">home >></a> Register </p>-->
+        </div>
+
+        <div style="display: flex;" class="form-nam">
+      <label for="name" >Name</label><br>
+      <input type="text" name="first_name" id="name" placeholder="First Name" required>
+      <input type="text" name="last_name" id="name" placeholder="Last Name" required>
+        </div>
+      <hr>
+       <div class="formbasic" style="display: flex;"><label for="emails" >Email</label>
+
+     <input type="text" name="emails" id="name" placeholder="name@example.com" size="50" required></div>
+
+      <div class="formbasic" style="display: flex;"><label for="username"> Enter New Username</label>
+      <input type="text" name="username" id="name" required></div>
+       
+      <div class="formbasic" style="display: flex;"><label for="password" >Enter Password</label>
+     <input type="text" name="password" id="name" required></div>
+        <hr>
+      <div class="formbasic" style="display: flex;"><label for="srtadres" >Enter Street Address</label>
+      <input type="text" name="st_address" id="name"></div>
+
+      <div class="dropstate" style="display: flex;"><label for="state">Enter State</label>
+        <select name="state" id="name"> 
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </select>
+      </div>
+
+     <div class="zipclass" style="display: flex;"> <label for="zip" >Enter Zip Code </label>
+      <input type="text" name="zip" id="name" maxlength="5"></div>
+  
+      <div class="chk_box"><input type="checkbox" name="chk_email">
+   <label for="chk_email" class="clickme">Send me emails with coupons, deals and more!</label></div>  
+   
+    <div class="btn-block">
+        <button type="submit" href="/">Submit</button>
+      </div>
+    </form>
+  
+  </div>
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"> <i class="fas fa-arrow-right"></i> home</a>
+            <a href="shop.html"> <i class="fas fa-arrow-right"></i> shop</a>
+            <a href="about.html"> <i class="fas fa-arrow-right"></i> about</a>
+           
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i> my order </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> my favorite </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> my wishlist </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> terms or use </a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href=""> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href=""> <i class="fab fa-twitter"></i> twitter </a>
+            <a href=""> <i class="fab fa-youtube"></i> youtube </a>
+            <a href=""> <i class="fab fa-instagram"></i> instagram </a>
+         
+        </div>
+
+       
+
+    </div>
+
+</section>
+
+
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom css file link  -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
