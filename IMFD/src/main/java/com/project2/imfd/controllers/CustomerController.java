@@ -2,6 +2,8 @@ package com.project2.imfd.controllers;
 
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +45,12 @@ public class CustomerController {
         return new ResponseEntity<>(login,HttpStatus.OK);
         
     }
+	
+	//to fetch data for customer profile using customer username
+	@GetMapping("/profile/{uname}")
+	public Customer getCostomerByUsername(@PathVariable String uname){
+	Customer customer= cs.getCustomerByUsername(uname);
+	return customer;
+	}
 	
 }

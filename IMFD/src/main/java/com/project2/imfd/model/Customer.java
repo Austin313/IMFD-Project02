@@ -30,7 +30,7 @@ public class Customer implements Serializable{
 	@Column(nullable=false)
 	private String phoneno;
 	private String username;
-	private String passwordd;
+	private String password;
 	/**
 	 * @param customer_id
 	 * @param firstname
@@ -38,10 +38,10 @@ public class Customer implements Serializable{
 	 * @param address
 	 * @param phoneno
 	 * @param username
-	 * @param passwordd
+	 * @param password
 	 */
 	public Customer(Integer customer_id, String firstname, String lastname, String address, String phoneno,
-			String username, String passwordd) {
+			String username, String password) {
 		super();
 		this.customer_id = customer_id;
 		this.firstname = firstname;
@@ -49,7 +49,7 @@ public class Customer implements Serializable{
 		this.address = address;
 		this.phoneno = phoneno;
 		this.username = username;
-		this.passwordd = passwordd;
+		this.password = password;
 	}
 	
 	/*
