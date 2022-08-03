@@ -1,44 +1,44 @@
 package com.project2.imfd.model;
 
 
+import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@SuppressWarnings("serial")
 @Entity
-public class Item {
+@Setter
+@Getter
+@NoArgsConstructor
+@ToString
+public class Item implements Serializable{
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-int itemno;
-int itemname;
-public Item() {
-	super();
-}
+private Integer itemno;
+private String itemname;
+private String itemType;
+private float itemPrice;
 
-public Item(int itemname) {
-	super();
-	this.itemname = itemname;
-}
-
-public Item(int itemno, int itemname) {
+public Item(Integer itemno, String itemname, String itemType, float itemPrice) {
 	super();
 	this.itemno = itemno;
 	this.itemname = itemname;
+	this.itemType = itemType;
+	this.itemPrice = itemPrice;
 }
 
-public int getItemno() {
-	return itemno;
-}
-public void setItemno(int itemno) {
-	this.itemno = itemno;
-}
-public int getItemname() {
-	return itemname;
-}
-public void setItemname(int itemname) {
-	this.itemname = itemname;
-}
 
 
 }
