@@ -8,7 +8,7 @@
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="app.component.css">
@@ -29,11 +29,11 @@
       <a routerLink="/contact">contact</a>
   </nav>
 
-  <div class="icons">
-      <div id="menu-btn" class="fas fa-bars"></div>
+  <div class="icons" (click)="navButton()" >
+      <div id="menu-btn" class="fas fa-bars" ></div>
       <div id="search-btn" class="fas fa-search"></div>
-      <div id="cart-btn" class="fas fa-shopping-cart"></div>
-      <div id="login-btn" class="fas fa-user"></div>
+      <div id="cart-btn" class="fas fa-shopping-cart" ></div>
+      <div id="login-btn" class="fas fa-user" ></div>
   </div>
 
   <form action="" class="search-form">
@@ -86,15 +86,10 @@
       </div>
       <input type="submit" value="login now" class="btn">
       <p>forget password? <a href="#">click here</a></p>
-      <p>don't have an account? <a href="#">create one</a></p>
+      <p>don't have an account? <a routerLink="/register">create one</a></p>
   </form>
 
 </header>
 <router-outlet></router-outlet>
-<!--end of header-->
-  <!-- <app-home></app-home>
-  <app-blog></app-blog>
-  <app-contact></app-contact>
-  <app-review></app-review>
-  <app-shop></app-shop> -->
   </div>
+  

@@ -9,8 +9,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { FormsModule } from '@angular/forms';
-import { AboutComponent } from './about/about.component';
-import { RegisterComponent } from './register/register.component';
+import { AboutComponent } from './components/about/about.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [

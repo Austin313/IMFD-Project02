@@ -16,7 +16,8 @@ const routes: Routes = [
   {path:'review',component:ReviewComponent},
   {path:'contact',component:ContactComponent},
   {path:'about',component:AboutComponent},
-  {path:'register',component:RegisterComponent}
+  {path:'register',component:RegisterComponent},
+  {path:'',component:HomeComponent}
 ];
 
 @NgModule({
