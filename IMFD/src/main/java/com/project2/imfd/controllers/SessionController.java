@@ -16,7 +16,13 @@ public class SessionController {
 	}
 	
 	public void sessionDestroy() {
-		HttpSession session = req.getSession(true);
+		HttpSession session = req.getSession(false);
 		session.invalidate();
+	}
+	
+	public String getSessionName() {
+		HttpSession session = req.getSession(false);
+		String username = (String) session.getAttribute("username");
+		return username;
 	}
 }
