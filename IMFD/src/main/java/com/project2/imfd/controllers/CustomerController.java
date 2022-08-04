@@ -2,7 +2,11 @@ package com.project2.imfd.controllers;
 
 
 
+import java.net.http.HttpRequest;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +28,14 @@ public class CustomerController {
 
 	private CustomerRepository cr;
 	private CustomerService cs;
+	private SessionController sc;
 	
 	@Autowired
-	public CustomerController(CustomerRepository cr, CustomerService cs) {
+	public CustomerController(CustomerRepository cr, CustomerService cs, SessionController sc) {
 		super();
 		this.cr = cr;
 		this.cs = cs;
+		this.sc = sc;
 	}
 	
 	@PostMapping("/customer")
@@ -40,8 +46,9 @@ public class CustomerController {
 	
 
 	@PostMapping("/login")
-    public ResponseEntity<Boolean> login(@RequestParam String uname, @RequestParam String pass) {
+    public ResponseEntity<Boolean> login(@RequestParam String uname, @RequestParam String pass,HttpServletRequest req) {
         boolean login = cs.login(uname, pass);
+        sc.sessionCreate(uname);
         return new ResponseEntity<>(login,HttpStatus.OK);
         
     }
