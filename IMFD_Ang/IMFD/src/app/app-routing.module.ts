@@ -8,6 +8,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ReviewComponent } from './components/review/review.component';
 import { AboutComponent } from './components/about/about.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'about',component:AboutComponent},
   {path:'register',component:RegisterComponent},
-  {path:'',component:HomeComponent}
+  {path:'',component:HomeComponent},
+  {path:'profile', component:ProfileComponent}
 ];
 
 @NgModule({

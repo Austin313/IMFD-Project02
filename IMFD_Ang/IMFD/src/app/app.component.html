@@ -27,6 +27,7 @@
       <a routerLink="/review">review</a>
       <a routerLink="/blog">blog</a>
       <a routerLink="/contact">contact</a>
+      <a routerLink="/profile">profile</a>
   </nav>
 
   <div class="icons" (click)="navButton()" >
@@ -76,15 +77,15 @@
       <a href="#" class="btn">checkout cart</a>
   </div>
 
-  <form action="" class="login-form">
+  <form class="login-form">
       <h3>login form</h3>
-      <input type="email" placeholder="enter your email" class="box">
-      <input type="password" placeholder="enter your password" class="box">
+      <input type="text" placeholder="enter your Username" class="box" [(ngModel)]="uname" name="uname">
+      <input type="password" placeholder="enter your password" class="box" name="password">
       <div class="remember">
           <input type="checkbox" name="" id="remember-me">
           <label for="remember-me">remember me</label>
       </div>
-      <input type="submit" value="login now" class="btn">
+      <button class="btn" (click)="loginClick(uname)">Log In Now</button>
       <p>forget password? <a href="#">click here</a></p>
       <p>don't have an account? <a routerLink="/register">create one</a></p>
   </form>

@@ -1,4 +1,8 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login.service';
+import { Customer } from './customer';
+import { CustomerService } from './customer.service';
 
 
 @Component({
@@ -6,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'IMFD';
+  public customer:Customer;
  
+  public uname:string = "Austin";
+  public isLoggedIn:boolean = false;
+  constructor(private login:LoginService){
+  }
   navButton(){
   const loginForm = document.querySelector('.login-form') as HTMLFormElement;
   const loginButton= document.querySelector('#login-btn') as HTMLDivElement;
@@ -55,6 +64,13 @@ export class AppComponent {
 
 }
 
+ loginClick(user:string):any{
+  alert("button clicked")
+  this.login.loginCheck(this.login.username).subscribe(data=>{
+    this.customer = data;
+  });
+  this.isLoggedIn = true;
+ }
 
 }
 
