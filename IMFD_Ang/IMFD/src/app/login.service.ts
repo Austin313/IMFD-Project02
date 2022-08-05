@@ -7,9 +7,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
-  public username:string = "";
+  public username:string;
+  public password:string;
   baseUrl= environment.backendUrl
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+   }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,8 +21,10 @@ export class LoginService {
   
 loginCheck(uname:string):Observable<Customer>{
   let params = new HttpParams()
-  .set('uname', this.username);
-  return this.http.get<Customer>(this.baseUrl+"login")
+  .set('uname', this.username)
+  .set('pass', this.password);
+  alert(this.username)
+  return this.http.get<Customer>(this.baseUrl+"login",{params: params})
 }
 
 }

@@ -77,15 +77,17 @@
       <a href="#" class="btn">checkout cart</a>
   </div>
 
-  <form class="login-form">
+  <form #form method="http://localhost:2121/login" method="get" class="login-form">
       <h3>login form</h3>
       <input type="text" placeholder="enter your Username" class="box" [(ngModel)]="uname" name="uname">
-      <input type="password" placeholder="enter your password" class="box" name="password">
+      <input type="password" placeholder="enter your password" class="box" [(ngModel)]="pass" name="password">
       <div class="remember">
           <input type="checkbox" name="" id="remember-me">
           <label for="remember-me">remember me</label>
       </div>
-      <button class="btn" (click)="loginClick(uname)">Log In Now</button>
+      <button type="submit" class="btn" (click)="form.submit()">Log In Now</button>
+      {{uname}} &nbsp;
+      {{pass}}
       <p>forget password? <a href="#">click here</a></p>
       <p>don't have an account? <a routerLink="/register">create one</a></p>
   </form>

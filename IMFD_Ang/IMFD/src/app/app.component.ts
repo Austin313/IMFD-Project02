@@ -14,10 +14,14 @@ export class AppComponent{
   title = 'IMFD';
   public customer:Customer;
  
-  public uname:string = "Austin";
+  public uname:string = "";
+  public pass:string ="";
   public isLoggedIn:boolean = false;
   constructor(private login:LoginService){
+    login.username = this.uname;
+    login.password = this.pass;
   }
+  
   navButton(){
   const loginForm = document.querySelector('.login-form') as HTMLFormElement;
   const loginButton= document.querySelector('#login-btn') as HTMLDivElement;
@@ -64,7 +68,7 @@ export class AppComponent{
 
 }
 
- loginClick(user:string):any{
+ loginClick():any{
   alert("button clicked")
   this.login.loginCheck(this.login.username).subscribe(data=>{
     this.customer = data;
