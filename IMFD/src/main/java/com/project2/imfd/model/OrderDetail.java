@@ -2,8 +2,10 @@ package com.project2.imfd.model;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +39,8 @@ import lombok.ToString;
 		private double tax;
 		private double total;
 		private String employee;
-		
-}
+		@CreationTimestamp
+		@Column(updatable=false)
+		private LocalDateTime createdAt;
+				
+		}
