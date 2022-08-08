@@ -1,4 +1,6 @@
 <div class="page">
+    
+
 
 <head>
     <meta charset="UTF-8">
@@ -27,6 +29,7 @@
       <a routerLink="/review">review</a>
       <a routerLink="/blog">blog</a>
       <a routerLink="/contact">contact</a>
+
   </nav>
 
   <div class="icons" (click)="navButton()" >
@@ -42,52 +45,82 @@
   </form>
 
   <div class="shopping-cart">
-      <div class="box">
+      <div *ngFor="let c of carts" class="box">
           <i class="fas fa-times"></i>
-          <img src="image/cart-1.jpg" alt="">
           <div class="content">
-              <h3>organic food</h3>
-              <span class="quantity">1</span>
+              <h3>{{c.itemName}}</h3>
+              <span class="quantity">{{c.quantity}}</span>
               <span class="multiply">x</span>
-              <span class="price">$18.99</span>
+              <span class="price">{{c.itemPrice}}</span>
           </div>
       </div>
-      <div class="box">
-          <i class="fas fa-times"></i>
-          <img src="image/cart-2.jpg" alt="">
-          <div class="content">
-              <h3>organic food</h3>
-              <span class="quantity">1</span>
-              <span class="multiply">x</span>
-              <span class="price">$18.99</span>
-          </div>
-      </div>
-      <div class="box">
-          <i class="fas fa-times"></i>
-          <img src="image/cart-3.jpg" alt="">
-          <div class="content">
-              <h3>organic food</h3>
-              <span class="quantity">1</span>
-              <span class="multiply">x</span>
-              <span class="price">$18.99</span>
-          </div>
-      </div>
-      <h3 class="total"> total : <span>56.97</span> </h3>
+      
+      <h3 class="total"> total : <span>total calculated</span> </h3>
       <a href="#" class="btn">checkout cart</a>
   </div>
+  <div *ngIf="!reg else register">
+        <form *ngIf="!isLoggedIn else profile" method="http://localhost:2121/login" method="get" class="login-form">
+            <h3>login form</h3>
+            <input type="text" placeholder="enter your Username" class="box" [(ngModel)]="uname" name="uname">
+            <input type="password" placeholder="enter your password" class="box" [(ngModel)]="pass" name="pass">
+            <div class="remember" *ngIf="!isNull else notFound">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">remember me</label>
+            </div>
+            <ng-template #notFound>
+                <h4 style="color: red;">Username or password incorrect, please try again</h4>
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">remember me</label>
+            </ng-template>
+            <button type="submit" class="btn" (click)="loginClick()">Log In Now</button>
+            <p>forget password? <a href="#">click here</a></p>
+            <p>don't have an account?<button type="button" class="btn" (click)="needRegister()">
+                Register Now!
+              </button></p>
+        </form>
+            <ng-template #profile >
+            <form class="login-form">
+                <h3>Welcome , {{customer.username}}</h3>
+                <!--Picture bubble will go here-->
+                <h4>Full Name: {{customer.firstname}}&nbsp;{{customer.lastname}}</h4>
+                <h4>Delivery Add.: {{customer.address}}</h4>
+                <h4>Contact: {{customer.phoneno}}</h4>
+                <button type="button" (click)="logOut()" class="btn">Log Out</button>
+            </form>
+        </ng-template>
+  </div>
+  <ng-template #register>
+    <div>
+    <form class="login-form">
+        <h3>Register!</h3>
+        <div style="display: flex;" class="form-nam">
+            <label for="name" >Name</label><br>
+            <input type="text" name="first_name" id="name" placeholder="First Name" required [(ngModel)]="newCustomer.firstname">
+            <input type="text" name="last_name" id="name" placeholder="Last Name" required [(ngModel)]="newCustomer.lastname">
+              </div>
+      
+            <div class="formbasic" style="display: flex;"><label for="username"> Enter New Username</label>
+            <input type="text" name="username" id="name" required [(ngModel)]="newCustomer.username"></div>
+             
+            <div class="formbasic" style="display: flex;"><label for="password" >Enter Password</label>
+           <input type="text" name="password" id="name" [(ngModel)]="newCustomer.password" required></div>
 
-  <form action="" class="login-form">
-      <h3>login form</h3>
-      <input type="email" placeholder="enter your email" class="box">
-      <input type="password" placeholder="enter your password" class="box">
-      <div class="remember">
-          <input type="checkbox" name="" id="remember-me">
-          <label for="remember-me">remember me</label>
-      </div>
-      <input type="submit" value="login now" class="btn">
-      <p>forget password? <a href="#">click here</a></p>
-      <p>don't have an account? <a routerLink="/register">create one</a></p>
-  </form>
+           <div class="formbasic" style="display: flex;"><label for="phoneno" >Enter Phone</label>
+            <input type="text" name="phoneno" id="name" [(ngModel)]="newCustomer.phoneno" required></div>
+
+            <div class="formbasic" style="display: flex;"><label for="st_address" >Enter Street Address</label>
+            <input type="text" name="st_address" id="name"[(ngModel)]="newCustomer.address"></div>  
+         
+          <div class="btn-block">
+              <button type="submit" class="btn" (click)="submitRegister()">Submit</button>
+            </div>
+    </form>
+  </div>
+  </ng-template>
+  
+
+
+ 
 
 </header>
 <router-outlet></router-outlet>

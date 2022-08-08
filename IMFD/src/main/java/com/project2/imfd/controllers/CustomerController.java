@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session.Cookie;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,18 +26,22 @@ import com.project2.imfd.repo.CustomerRepository;
 import com.project2.imfd.services.CustomerService;
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 public class CustomerController {
 
 	private CustomerRepository cr;
 	private CustomerService cs;
-	private SessionController sc;
+	public HttpServletRequest req;
+	public HttpSession session;
+	public Cookie cookie;
+	public static String username;
+
 	
 	@Autowired
-	public CustomerController(CustomerRepository cr, CustomerService cs, SessionController sc) {
+	public CustomerController(CustomerRepository cr, CustomerService cs) {
 		super();
 		this.cr = cr;
 		this.cs = cs;
-		this.sc = sc;
 	}
 	
 	@PostMapping("/customer")
@@ -45,19 +51,23 @@ public class CustomerController {
 	
 	
 
-	@PostMapping("/login")
-    public ResponseEntity<Boolean> login(@RequestParam String uname, @RequestParam String pass,HttpServletRequest req) {
-        boolean login = cs.login(uname, pass);
-        sc.sessionCreate(uname);
-        return new ResponseEntity<>(login,HttpStatus.OK);
+	@GetMapping("/login")
+    public ResponseEntity<Customer> login(@RequestParam String uname, @RequestParam String pass) {
+		Customer customer=null;
+		if(cs.login(uname, pass)) {
+			customer = cs.getCustomerByUsername(uname);
+			username = uname;
+			
+		}
+        return new ResponseEntity<>(customer,HttpStatus.OK);
         
     }
 	
 	//to fetch data for customer profile using customer username
-	@GetMapping("/profile/{uname}")
-	public Customer getCostomerByUsername(@PathVariable String uname){
-	Customer customer= cs.getCustomerByUsername(uname);
-	return customer;
+	@GetMapping("/profile")
+	public ResponseEntity<Customer> getCustomerByUsername(){
+	Customer customer= cs.getCustomerByUsername(username);
+	return new ResponseEntity<>(customer,HttpStatus.OK);
 	}
 	
 }

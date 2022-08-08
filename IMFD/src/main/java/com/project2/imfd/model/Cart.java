@@ -4,9 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,24 +23,18 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class OrderItem implements Serializable {
+public class Cart implements Serializable {
 	
-	@EmbeddedId
-	OrderItemKey id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer cart_id;
+	private int customer;
+	private int itemId;
+	private String itemName;
+	private int itemPrice;
+	private int quantity;
+}
 	
-	@ManyToOne
-	@MapsId("orderNo")
-	@JoinColumn(name="orderno")
-	OrderDetail orderDetail;
-	
-	@ManyToOne
-	@MapsId("itemNo")
-	@JoinColumn(name="itemno")
-	Item item;
-	
-	
-	int quantity;
 	
 
-	
-}
+
