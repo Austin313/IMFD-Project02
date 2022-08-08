@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session.Cookie;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +31,10 @@ public class CustomerController {
 
 	private CustomerRepository cr;
 	private CustomerService cs;
+	public HttpServletRequest req;
+	public HttpSession session;
+	public Cookie cookie;
+	public static String username;
 
 	
 	@Autowired
@@ -51,15 +56,17 @@ public class CustomerController {
 		Customer customer=null;
 		if(cs.login(uname, pass)) {
 			customer = cs.getCustomerByUsername(uname);
+			username = uname;
+			
 		}
         return new ResponseEntity<>(customer,HttpStatus.OK);
         
     }
 	
 	//to fetch data for customer profile using customer username
-	@GetMapping("/profile/{uname}")
-	public ResponseEntity<Customer> getCustomerByUsername(@PathVariable String uname){
-	Customer customer= cs.getCustomerByUsername(uname);
+	@GetMapping("/profile")
+	public ResponseEntity<Customer> getCustomerByUsername(){
+	Customer customer= cs.getCustomerByUsername(username);
 	return new ResponseEntity<>(customer,HttpStatus.OK);
 	}
 	

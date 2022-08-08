@@ -13,6 +13,8 @@ export class CustomerService {
 
   constructor(private http:HttpClient) { }
 
+  
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-type':'application/json'
@@ -22,4 +24,8 @@ export class CustomerService {
   GetCustomer(uname:string): Observable<Customer>{
     return this.http.get<Customer>(this.baseurl+"profile/"+uname)
   }
+
+  addCustomer(customer:Customer): Observable<Customer>{
+      return this.http.post<Customer>(this.baseurl+"customer", customer)
+    }
 }

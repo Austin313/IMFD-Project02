@@ -19,11 +19,11 @@ export class LoginService {
     })
   }
   
-loginCheck(uname:string):Observable<Customer>{
+loginCheck(uname:string, pass:string):Observable<Customer>{
+  let passlower:string = pass.toLowerCase();
   let params = new HttpParams()
-  .set('uname', this.username)
-  .set('pass', this.password);
-  alert(this.username)
+  .set('uname', uname)
+  .set('pass', passlower);
   return this.http.get<Customer>(this.baseUrl+"login",{params: params})
 }
 

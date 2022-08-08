@@ -11,8 +11,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 @NgModule({
@@ -24,8 +23,6 @@ import { ProfileComponent } from './components/profile/profile.component';
     ReviewComponent,
     ShopComponent,
     AboutComponent,
-    RegisterComponent,
-    ProfileComponent,
 
   ],
   imports: [
