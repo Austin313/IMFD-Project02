@@ -33,8 +33,8 @@ import lombok.ToString;
 		
 		private String status = "Pending";
 		private double subtotal;
-		private double tax;
-		private double total;
+		private double tax = 8.25;
+		private double total = subtotal * 1.825;
 		private String employee;
 		
 }
