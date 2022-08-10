@@ -20,7 +20,7 @@ export class ShopComponent implements OnInit {
   confirm:boolean = false;
   quan:number =0;
 
-   selectedItem:Item = {
+  selectedItem:Item = {
     "itemno": 0,
     "itemType":"",
     "itemname":"",
@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
   constructor(private is:ItemService, private l:LoginService,private cart:CartService) { }
   
   
- 
+
 
   ngOnInit(): void {
     this.is.GetItems().subscribe(data=>{
@@ -55,26 +55,27 @@ export class ShopComponent implements OnInit {
 
   getItem(index:number):any{
     const id = this.items.map((i) =>{
-       return i.itemno;
-       })
+      return i.itemno;
+      })
     this.is.GetItem(id[index]).subscribe(data => {
       this.selectedItem = data
       this.confirm = true;
-      alert(this.selectedItem.itemname+1111111111)
     })
   }
 
 
   addCart():any{
     this.newCart.itemId = this.selectedItem.itemno;
-    alert(this.newCart.itemId)
     this.newCart.itemPrice = this.selectedItem.itemPrice;
     this.newCart.itemName = this.selectedItem.itemname;
     this.newCart.quantity = this.quan;
+    if(this.quan <= 0){
+      alert("please try again, and enter a number greater than 0")
+    } else {
     this.cart.addToCart(this.newCart).subscribe();
     this.quan = 0;
     this.confirm = false;
-    
+    }
   }
   
 

@@ -45,9 +45,9 @@ public class CartController {
 	}
 	
 	@GetMapping
-	public List<Cart> showCart(){
+	public List<Cart> showCart(int cust){
 		
-		return c.findAll();
+		return c.findAllByCustomer(cust);
 	}
 	
 	
@@ -57,13 +57,13 @@ public class CartController {
 		return new ResponseEntity<>(temp,HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/increase")
+	@DeleteMapping("/increase")
 	public ResponseEntity<?> increaseQ(@RequestParam int cust,@RequestParam int item) {
 		cart.increaseQ(cust, item);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@PutMapping("/decrease")
+	@DeleteMapping("/decrease")
 	public ResponseEntity<?> decreaseQ(@RequestParam int cust,@RequestParam int item) {
 		cart.decreaseQ(cust, item);
 		return new ResponseEntity<>(HttpStatus.OK);

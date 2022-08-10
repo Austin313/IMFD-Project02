@@ -67,13 +67,13 @@
             </div>
             <ng-template  #quantity>
                 <div class="icons">
-                    <input type="number" min="1" [(ngModel)]="quan" placeholder="Enter a quantity"/>
-                    <button class="btn" type="button" (click)="addCart()">Add To Cart</button>
+                    <input type="number" min="1" max="10" [(ngModel)]="quan" placeholder="Enter a quantity"/>
+                    <button class="btn" type="submit" (click)="addCart()">Add To Cart</button>
                 </div>
 
             </ng-template>
             <div class="image">
-                <img src="../../../image/product-1.jpg" alt="">
+                <img src="../../../assets/image/product-1.jpg" alt="">
             </div>
             <div class="content">
                 <h3>{{i.itemname}}</h3>
