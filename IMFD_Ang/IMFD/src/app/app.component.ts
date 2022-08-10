@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { LoginService } from './login.service';
 import { Customer } from './customer';
 import { CustomerService } from './customer.service';
@@ -13,7 +13,7 @@ import { Cart } from './cart';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent implements OnInit, OnChanges{
   title = 'IMFD';
   public customer:Customer;
  
@@ -23,7 +23,7 @@ export class AppComponent{
   public isNull:boolean = false;
   public temp:number = 0;
   public reg:boolean = false;
-
+  public test:string = "";
   //=====================
   public firstname:string ="";
   public lastname:string ="";
@@ -41,13 +41,42 @@ export class AppComponent{
     
   }
 
+//total method
+public total:number = 0;
+public temporary:number = 0;
+calculateTotal():any{
+  for(var j:number = 0; j < this.carts.length; j++){
+    this.temporary = this.carts[j].itemPrice * this.carts[j].quantity
+    this.total += this.temporary
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+//=============================
+
+
+  ngOnChanges(): void {
+   
+  }
+  
+
+  
+
   ngOnInit():void{
-    this.cart.GetCarts().subscribe(data =>{
-      this.carts=data;
-    })
+    
   }
   
    newCustomer= {
+    "customer_id":0,
     "firstname":'',
     "lastname":'',
     "username":'',
@@ -111,6 +140,7 @@ export class AppComponent{
   this.login.loginCheck(this.uname,this.pass).subscribe(data=>{
     this.customer = data;
     this.temp = 1;
+    this.login.currentUser = data;
     this.logValid();
   });
   
@@ -154,7 +184,23 @@ export class AppComponent{
 
  //Cart
 
+ loadCart():any{
+  this.cart.GetCarts().subscribe(data =>{
+    this.carts=data;
+  })
+  this.calculateTotal();
+}
 
+removeCart(index:number):any{
+  const cust = this.carts.map((c) =>{
+     return c.customer;
+  })
+  const item = this.carts.map((c) =>{
+    return c.itemId;
+ })
+  this.cart.removeCart(cust[index],item[index]).subscribe();
+  
+}
 
 
 

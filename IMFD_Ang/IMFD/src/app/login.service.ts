@@ -10,9 +10,10 @@ export class LoginService {
   public username:string;
   public password:string;
   baseUrl= environment.backendUrl
+  public currentUser:Customer;
   constructor(private http:HttpClient) {
    }
-
+   
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json'

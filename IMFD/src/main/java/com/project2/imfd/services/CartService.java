@@ -9,13 +9,12 @@ import org.springframework.stereotype.Service;
 import com.project2.imfd.exceptions.CustomerNotFound;
 import com.project2.imfd.exceptions.ProductNotFound;
 import com.project2.imfd.model.Cart;
-import com.project2.imfd.model.CartKey;
 import com.project2.imfd.model.Customer;
 import com.project2.imfd.model.Item;
 import com.project2.imfd.repo.CartRepository;
 import com.project2.imfd.repo.CustomerRepository;
 import com.project2.imfd.repo.ItemRepository;
-import com.project2.imfd.model.CartKey;
+
 
 @Service
 public class CartService {
@@ -47,4 +46,32 @@ public class CartService {
 		return cr.findAll();	
 	}
 	
+	public Cart increaseQ(int cust, int item) {
+		Cart cart = cr.findByCustomerAndItemId(cust,item);
+		int current = cart.getQuantity();
+		current++;
+		cart.setQuantity(current);
+		return cr.save(cart);
+		
+	}
+	
+	public Cart decreaseQ(int cust, int item) {
+		Cart cart = cr.findByCustomerAndItemId(cust,item);
+		int current = cart.getQuantity();
+		current--;
+		if(current <= 0) {
+			cr.deleteById(cart.getCart_id());
+		} else {
+			cart.setQuantity(current);
+			cr.save(cart);
+		}
+		
+		return cart;
+		
+	}
+	
+	public void removeFromCart(int cust, int item) {
+		Cart cart = cr.findByCustomerAndItemId(cust,item);		
+		cr.deleteById(cart.getCart_id());
+	}
 }

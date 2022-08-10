@@ -22,4 +22,9 @@ export class ItemService {
   GetItems():Observable<Item[]>{
     return this.http.get<Item[]>(this.baseurl+"items")
   }
+
+  GetItem(id:number):Observable<Item>{
+    alert(id)
+    return this.http.get<Item>(this.baseurl+"items/"+id)
+  }
 }

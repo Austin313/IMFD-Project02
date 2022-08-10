@@ -5,15 +5,16 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project2.imfd.model.Cart;
-import com.project2.imfd.model.CartKey;
 import com.project2.imfd.repo.CartRepository;
 import com.project2.imfd.services.CartService;
 import com.project2.imfd.services.CustomerService;
@@ -51,8 +52,29 @@ public class CartController {
 	
 	
 	@PostMapping("/add")
-	public Cart addCart(@RequestBody Cart newCart){
+	public ResponseEntity<Cart> addCart(@RequestBody Cart newCart){
 		Cart temp = cart.addToCart(newCart); 
-		return temp;
+		return new ResponseEntity<>(temp,HttpStatus.CREATED);
 	}
+	
+	@PutMapping("/increase")
+	public ResponseEntity<?> increaseQ(@RequestParam int cust,@RequestParam int item) {
+		cart.increaseQ(cust, item);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@PutMapping("/decrease")
+	public ResponseEntity<?> decreaseQ(@RequestParam int cust,@RequestParam int item) {
+		cart.decreaseQ(cust, item);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> removeFromCart(@RequestParam int cust, @RequestParam int item){
+			cart.removeFromCart(cust, item);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+	
+	
+	
 }

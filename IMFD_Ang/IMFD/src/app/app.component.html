@@ -35,7 +35,7 @@
   <div class="icons" (click)="navButton()" >
       <div id="menu-btn" class="fas fa-bars" ></div>
       <div id="search-btn" class="fas fa-search"></div>
-      <div id="cart-btn" class="fas fa-shopping-cart" ></div>
+      <div id="cart-btn" (click)="loadCart()" class="fas fa-shopping-cart" ></div>
       <div id="login-btn" class="fas fa-user" ></div>
   </div>
 
@@ -44,9 +44,9 @@
       <label for="search-box" class="fas fa-search"></label>
   </form>
 
-  <div class="shopping-cart">
-      <div *ngFor="let c of carts" class="box">
-          <i class="fas fa-times"></i>
+  <div *ngIf="isLoggedIn else plzlogin" class="shopping-cart">
+      <div *ngFor="let c of carts;let ind=index" class="box">
+          <i class="fas fa-times" (click)="removeCart(ind)"></i>
           <div class="content">
               <h3>{{c.itemName}}</h3>
               <span class="quantity">{{c.quantity}}</span>
@@ -55,9 +55,12 @@
           </div>
       </div>
       
-      <h3 class="total"> total : <span>total calculated</span> </h3>
+      <h3 class="total"> total : <span>{{total}}</span> </h3>
       <a href="#" class="btn">checkout cart</a>
   </div>
+  <ng-template #plzlogin>
+    <h3 style="text-align:center" class="shopping-cart">Please Log in to view your cart!</h3>
+  </ng-template>
   <div *ngIf="!reg else register">
         <form *ngIf="!isLoggedIn else profile" method="http://localhost:2121/login" method="get" class="login-form">
             <h3>login form</h3>
