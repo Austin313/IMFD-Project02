@@ -7,204 +7,221 @@ import { ThisReceiver } from '@angular/compiler';
 import { CartService } from './cart.service';
 import { Cart } from './cart';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, OnChanges{
+export class AppComponent {
   title = 'IMFD';
-  public customer:Customer;
- 
-  public uname:string = "";
-  public pass:string = "";
-  public isLoggedIn:boolean = false;
-  public isNull:boolean = false;
-  public temp:number = 0;
-  public reg:boolean = false;
-  public test:string = "";
+  public customer: Customer;
+
+  public uname: string = '';
+  public pass: string = '';
+  public isLoggedIn: boolean = false;
+  public isNull: boolean = false;
+  public temp: number = 0;
+  public reg: boolean = false;
+  public test: string = '';
+  public editProfile: boolean = false;
   //=====================
-  public firstname:string ="";
-  public lastname:string ="";
-  public username:string ="";
-  public password:string ="";
-  public phone:string ="";
-  public street:string ="";
-  public state:string ="";
-  public zip:string = "";
-  public address:string = this.street+" "+this.state+" "+this.zip;
+  public firstname: string = '';
+  public lastname: string = '';
+  public username: string = '';
+  public password: string = '';
+  public phone: string = '';
+  public street: string = '';
+  public state: string = '';
+  public zip: string = '';
+  public address: string = this.street + ' ' + this.state + ' ' + this.zip;
   //==============================
-  public carts:Cart[];
-  
-  constructor(private login:LoginService, private cust:CustomerService, private cart:CartService){
-    
-  }
+  public carts: Cart[];
 
-//total method
-public total:number = 0;
-public temporary:number = 0;
-calculateTotal():any{
-  for(var j:number = 0; j < this.carts.length; j++){
-    this.temporary = this.carts[j].itemPrice * this.carts[j].quantity
-    this.total += this.temporary
-  }
-}
+  constructor(
+    private login: LoginService,
+    private cust: CustomerService,
+    private cart: CartService
+  ) {}
 
-
-
-
-
-
-
-
-
-
-
-//=============================
-
-
-  ngOnChanges(): void {
-   
-  }
-  
-
-  
-
-  ngOnInit():void{
-    
-  }
-  
-   newCustomer= {
-    "customer_id":0,
-    "firstname":'',
-    "lastname":'',
-    "username":'',
-    "password":'',
-    "address":'',
-    "phoneno":''
-  }
-
-  navButton(){
-  const loginForm = document.querySelector('.login-form') as HTMLFormElement;
-  const loginButton= document.querySelector('#login-btn') as HTMLDivElement;
-  const navbar = document.querySelector('.navbar') as HTMLElement;
-  const cart = document.querySelector('.shopping-cart') as HTMLDivElement;
-  const searchForm = document.querySelector('.search-form') as HTMLFormElement;
-  const cartBtn = document.querySelector('#cart-btn') as HTMLDivElement;
-  const searchButton =document.querySelector('#search-btn') as HTMLDivElement;
-  const menuBtn = document.querySelector('#menu-btn') as HTMLDivElement;
-    loginButton.onclick = () =>{
-    loginForm.classList.toggle('active');
-    searchForm.classList.remove('active');
-    cart.classList.remove('active');
-    navbar.classList.remove('active');
+  //total method
+  public total: number = 0;
+  public temporary: number = 0;
+  calculateTotal(): any {
+    this.total = 0;
+    for (var j: number = 0; j < this.carts.length; j++) {
+      this.temporary = this.carts[j].itemPrice * this.carts[j].quantity;
+      this.total += this.temporary;
     }
+  }
 
-    cartBtn.onclick = () =>{
+  //=============================
+
+  newCustomer = {
+    customer_id: 0,
+    firstname: '',
+    lastname: '',
+    username: '',
+    password: '',
+    address: '',
+    phoneno: '',
+  };
+
+  navButton() {
+    const loginForm = document.querySelector('.login-form') as HTMLFormElement;
+    const loginButton = document.querySelector('#login-btn') as HTMLDivElement;
+    const navbar = document.querySelector('.navbar') as HTMLElement;
+    const cart = document.querySelector('.shopping-cart') as HTMLDivElement;
+    const searchForm = document.querySelector(
+      '.search-form'
+    ) as HTMLFormElement;
+    const cartBtn = document.querySelector('#cart-btn') as HTMLDivElement;
+    const searchButton = document.querySelector(
+      '#search-btn'
+    ) as HTMLDivElement;
+    const menuBtn = document.querySelector('#menu-btn') as HTMLDivElement;
+    loginButton.onclick = () => {
+      loginForm.classList.toggle('active');
+      searchForm.classList.remove('active');
+      cart.classList.remove('active');
+      navbar.classList.remove('active');
+    };
+
+    cartBtn.onclick = () => {
       cart.classList.toggle('active');
       searchForm.classList.remove('active');
       loginForm.classList.remove('active');
       navbar.classList.remove('active');
+    };
+
+    searchButton.onclick = () => {
+      searchForm.classList.toggle('active');
+      cart.classList.remove('active');
+      loginForm.classList.remove('active');
+      navbar.classList.remove('active');
+    };
+    menuBtn.onclick = () => {
+      navbar.classList.toggle('active');
+      searchForm.classList.remove('active');
+      cart.classList.remove('active');
+      loginForm.classList.remove('active');
+    };
+    window.onscroll = () => {
+      searchForm.classList.remove('active');
+      cart.classList.remove('active');
+      loginForm.classList.remove('active');
+      navbar.classList.remove('active');
+    };
   }
 
-  searchButton.onclick = () =>{
-    searchForm.classList.toggle('active');
-    cart.classList.remove('active');
-    loginForm.classList.remove('active');
-    navbar.classList.remove('active');
-  }
-  menuBtn.onclick = () =>{
-  navbar.classList.toggle('active');
-  searchForm.classList.remove('active');
-  cart.classList.remove('active');
-  loginForm.classList.remove('active');
-    
-  }
-  window.onscroll = () =>{
-    searchForm.classList.remove('active');
-    cart.classList.remove('active');
-    loginForm.classList.remove('active');
-    navbar.classList.remove('active');
-}
-
-
-}
-
-
-
-
-
-//login verification
- loginClick():any{
-  this.login.loginCheck(this.uname,this.pass).subscribe(data=>{
-    this.customer = data;
-    this.temp = 1;
-    this.login.currentUser = data;
-    this.logValid();
-  });
-  
-}
-
- logValid():any{
-  if(this.customer == null && this.temp == 1){
-    this.isNull = true;
-    this.temp = 0;
-    this.pass = "";
-  } else {
+  profileEdit(): any {
+    this.editProfile = true;
     this.isLoggedIn = true;
   }
-  
- }
- 
- 
- logOut():any{
-  this.isLoggedIn = false;
-  this.isNull = false;
-  this.customer;
-  this.pass = "";
-  this.uname = "";
- }
 
- //register
+  updateCustomer(): any {
+    let updatedCust: Customer = {
+      customer_id: this.customer.customer_id,
+      firstname: this.firstname,
+      lastname: '',
+      address: '',
+      phoneno: '',
+      username: '',
+      password: '',
+    };
+  }
 
- needRegister():any {
-  this.reg = true;
-  this.isLoggedIn = false;
-  
- }
+  //login verification
+  loginClick(): any {
+    this.login.loginCheck(this.uname, this.pass).subscribe((data) => {
+      this.customer = data;
+      this.temp = 1;
+      this.login.currentUser = data;
+      this.logValid();
+    });
+  }
 
- submitRegister():any {
- 
-  this.cust.addCustomer(this.newCustomer).subscribe();
-  this.reg = false;
+  logValid(): any {
+    if (this.customer == null && this.temp == 1) {
+      this.isNull = true;
+      this.temp = 0;
+      this.pass = '';
+    } else {
+      this.isLoggedIn = true;
+    }
+  }
 
- }
+  logOut(): any {
+    this.isLoggedIn = false;
+    this.isNull = false;
+    this.customer;
+    this.pass = '';
+    this.uname = '';
+    this.login.currentUser = {
+      customer_id: 0,
+      firstname: '',
+      lastname: '',
+      address: '',
+      phoneno: '',
+      username: '',
+      password: '',
+    };
+  }
 
+  //register
 
- //Cart
+  needRegister(): any {
+    this.reg = true;
+    this.isLoggedIn = false;
+  }
 
- loadCart():any{
-  this.cart.GetCarts().subscribe(data =>{
-    this.carts=data;
-  })
-  this.calculateTotal();
+  submitRegister(): any {
+    this.cust.addCustomer(this.newCustomer).subscribe();
+    this.reg = false;
+  }
+
+  //Cart
+
+  loadCart(): any {
+    this.cart.GetCarts(this.login.currentUser.customer_id).subscribe((data) => {
+      this.carts = data;
+    });
+    this.calculateTotal();
+  }
+
+  removeCart(index: number): any {
+    const cust = this.carts.map((c) => {
+      return c.customer;
+    });
+    const item = this.carts.map((c) => {
+      return c.itemId;
+    });
+
+    this.cart.removeCart(cust[index], item[index]).subscribe(() => {
+      console.log('cart deleted');
+    });
+  }
+
+  increaseQ(index: number): any {
+    const cust = this.carts.map((c) => {
+      return c.customer;
+    });
+    const item = this.carts.map((c) => {
+      return c.itemId;
+    });
+    this.cart.increaseQ(cust[index], item[index]).subscribe(() => {
+      console.log('added 1 to ' + cust);
+    });
+  }
+
+  decreaseQ(index: number): any {
+    const cust = this.carts.map((c) => {
+      return c.customer;
+    });
+    const item = this.carts.map((c) => {
+      return c.itemId;
+    });
+    this.cart.decreaseQ(cust[index], item[index]).subscribe(() => {
+      console.log('took away 1 to ' + cust);
+    });
+  }
 }
-
-removeCart(index:number):any{
-  const cust = this.carts.map((c) =>{
-     return c.customer;
-  })
-  const item = this.carts.map((c) =>{
-    return c.itemId;
- })
-  this.cart.removeCart(cust[index],item[index]).subscribe();
-  
-}
-
-
-
- 
-}
-
-

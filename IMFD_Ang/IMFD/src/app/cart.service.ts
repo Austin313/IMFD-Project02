@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Cart } from './cart';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -11,46 +11,51 @@ import { Customer } from './customer';
 import { Item } from './item';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CartService  {
-
+export class CartService {
   baseurl = environment.backendUrl;
 
-  cust:number;
-  itemno:number;
-
-
-  constructor(private http:HttpClient,private log:LoginService,private c:CustomerService, private cart:CartService) { }
-
-
+  constructor(
+    private http: HttpClient,
+    private log: LoginService,
+    private c: CustomerService
+  ) {}
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':'application/json'
-    })
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  GetCarts(cust: number): Observable<Cart[]> {
+    let params = new HttpParams().set('cust', cust);
+    return this.http.get<Cart[]>(this.baseurl + 'cart', { params: params });
   }
 
-  GetCarts():Observable<Cart[]>{
-    return this.http.get<Cart[]>(this.baseurl+"cart")
+  increaseQ(cust: number, item: number): Observable<any> {
+    let params = new HttpParams().set('cust', cust).set('item', item);
+    alert(cust + ' ' + item);
+    return this.http.delete<any>(this.baseurl + 'cart/increase', {
+      params: params,
+    });
   }
 
-  increaseQ():Observable<any>{
-    let params = new HttpParams()
-    .set('cust', this.cust)
-    .set('item', this.itemno);
-    return this.http.put<any>(this.baseurl+"increase",{params: params})
+  decreaseQ(cust: number, item: number): Observable<any> {
+    let params = new HttpParams().set('cust', cust).set('item', item);
+    return this.http.delete<any>(this.baseurl + 'cart/decrease', {
+      params: params,
+    });
   }
 
-  addToCart(cart:Cart):Observable<Cart>{
-    return this.http.post<Cart>(this.baseurl+"cart/add", cart)
+  addToCart(cart: Cart): Observable<Cart> {
+    return this.http.post<Cart>(this.baseurl + 'cart/add', cart);
   }
 
-  removeCart(cust:number,item:number):Observable<any>{
-    let params = new HttpParams()
-    .set('cust', cust)
-    .set('item', item)
-    return this.http.delete<any>(this.baseurl+"delete", {params:params})
+  removeCart(cust: number, item: number): Observable<any> {
+    let params = new HttpParams().set('cust', cust).set('item', item);
+    return this.http.delete<any>(this.baseurl + 'cart/delete', {
+      params: params,
+    });
   }
-
 }
