@@ -52,11 +52,6 @@ public class CustomerController {
 		cr.save(customer);
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-		Customer c = cs.updateCustomer(customer);
-		return new ResponseEntity<>(c,HttpStatus.OK);
-	}
 
 	@GetMapping("/login")
     public ResponseEntity<Customer> login(@RequestParam String uname, @RequestParam String pass) {

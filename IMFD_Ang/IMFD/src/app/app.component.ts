@@ -8,7 +8,7 @@ import { CartService } from './cart.service';
 import { Cart } from './cart';
 import { Order } from './order';
 import { CheckoutService } from './checkout.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -48,7 +48,8 @@ export class AppComponent {
     private login: LoginService,
     private cust: CustomerService,
     private cart: CartService,
-    private check: CheckoutService
+    private check: CheckoutService,
+    private router: Router
   ) {}
 
   //total method
@@ -213,10 +214,8 @@ export class AppComponent {
     });
   }
 
-
-  updateLink():void{
-  
-  this.router.navigate(['/update']);
+  updateLink(): void {
+    this.router.navigate(['/update']);
   }
 
   increaseQ(index: number): any {
@@ -230,7 +229,6 @@ export class AppComponent {
       console.log('added 1 to ' + cust);
     });
   }
-
 
   decreaseQ(index: number): any {
     const cust = this.carts.map((c) => {

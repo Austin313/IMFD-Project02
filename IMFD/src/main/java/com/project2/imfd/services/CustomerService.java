@@ -45,9 +45,4 @@ public class CustomerService {
 		return cr.findByusername(uname).orElseThrow(() -> new ProductNotFound("This product is not available!"));
 	}
 
-
-	public Customer updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return cr.save(customer);
-	}
 }
