@@ -23,12 +23,13 @@
   <a routerLink="/home" class="logo"> <i class="fas fa-shopping-basket"></i> FoodKart</a>
 
   <nav class="navbar">
-      <a routerLink="/home">home</a>
-      <a routerLink="/shop">shop</a>
-      <a routerLink="/about">about</a>
-      <a routerLink="/review">review</a>
-      <a routerLink="/blog">blog</a>
-      <a routerLink="/contact">contact</a>
+      <a routerLink="/home">Home</a>
+      <a routerLink="/shop">Shop</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/review">Review</a>
+      <a routerLink="/blog">Clog</a>
+      <a routerLink="/contact">Contact</a>
+      <a routerLink="/update">update</a>
 
   </nav>
 
@@ -89,6 +90,7 @@
                 <h4>Delivery Add.: {{customer.address}}</h4>
                 <h4>Contact: {{customer.phoneno}}</h4>
                 <button type="button" (click)="logOut()" class="btn">Log Out</button>
+                <button type="update" (click)="updateLink()" class="btn">Update</button>
             </form>
         </ng-template>
   </div>
@@ -98,7 +100,7 @@
         <h3>Register!</h3>
         <div style="display: flex;" class="form-nam">
             <label for="name" >Name</label><br>
-            <input type="text" name="first_name" id="name" placeholder="First Name" required [(ngModel)]="newCustomer.firstname">
+            <input type="text" name="first_name" id="name" placeholder="First Name" required [(ngModel)]="newCustomer.firstname"><br/>
             <input type="text" name="last_name" id="name" placeholder="Last Name" required [(ngModel)]="newCustomer.lastname">
               </div>
       
@@ -121,11 +123,17 @@
   </div>
   </ng-template>
   
+ 
+  
 
 
  
 
 </header>
+
+
+
+
+
 <router-outlet></router-outlet>
-  </div>
-  
+</div>

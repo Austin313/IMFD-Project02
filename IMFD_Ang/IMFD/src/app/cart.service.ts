@@ -21,7 +21,7 @@ export class CartService  {
   itemno:number;
 
 
-  constructor(private http:HttpClient,private log:LoginService,private c:CustomerService, private cart:CartService) { }
+  constructor(private http:HttpClient,private log:LoginService,private c:CustomerService) { }
 
 
 

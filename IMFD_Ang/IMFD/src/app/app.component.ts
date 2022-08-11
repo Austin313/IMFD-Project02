@@ -6,6 +6,7 @@ import { CustomerService } from './customer.service';
 import { ThisReceiver } from '@angular/compiler';
 import { CartService } from './cart.service';
 import { Cart } from './cart';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit, OnChanges{
   //==============================
   public carts:Cart[];
   
-  constructor(private login:LoginService, private cust:CustomerService, private cart:CartService){
+  constructor(private login:LoginService, private cust:CustomerService, private cart:CartService, private router:Router){
     
   }
 
@@ -202,6 +203,10 @@ removeCart(index:number):any{
   
 }
 
+updateLink():void{
+  
+this.router.navigate(['/update']);
+}
 
 
  

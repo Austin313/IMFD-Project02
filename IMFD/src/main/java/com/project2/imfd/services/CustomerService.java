@@ -36,6 +36,11 @@ public class CustomerService {
 		
 	}
 	
+	public Customer updateCustomer(Customer customer) {
+		
+		return cr.save(customer);
+	}
+	
 	public Customer getCustomerByUsername(String uname){
 		return cr.findByusername(uname).orElseThrow(() -> new ProductNotFound("This product is not available!"));
 	}

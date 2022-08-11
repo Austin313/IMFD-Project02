@@ -12,6 +12,8 @@ import { ShopComponent } from './components/shop/shop.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 
+import { UpdateComponent } from './update/update.component';
+
 
 
 @NgModule({
@@ -24,14 +26,16 @@ import { AboutComponent } from './components/about/about.component';
     ShopComponent,
     AboutComponent,
 
+    UpdateComponent
+
   ],
-  imports: [
+    imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+ bootstrap: [AppComponent]
 })
 export class AppModule { }
