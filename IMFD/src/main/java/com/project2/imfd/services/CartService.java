@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project2.imfd.exceptions.CustomerNotFound;
 import com.project2.imfd.exceptions.ProductNotFound;
@@ -21,14 +22,14 @@ public class CartService {
 
 	private final CartRepository cr;
 	private final CustomerRepository cusR;
-	private final ItemRepository ir;
+	private final ItemService is;
 
 	@Autowired
-	public CartService(CartRepository cr, CustomerRepository cusR, ItemRepository ir) {
+	public CartService(CartRepository cr, CustomerRepository cusR, ItemService is) {
 		super();
 		this.cr = cr;
 		this.cusR = cusR;
-		this.ir = ir;
+		this.is = is;
 	}
 	
 	public Cart addToCart(Cart cart) {
@@ -36,7 +37,7 @@ public class CartService {
 //		Item i = ir.findById(cart.getId().getItemNo()).orElseThrow(() -> new ProductNotFound("Item was not found"));
 //		CartKey key = new CartKey(c.getCustomer_id(),i.getItemno());
 //		Cart newCart = new Cart(key,c,i,cart.getQuantity());
-		
+		is.lowerStock(cart.getItemId(), cart.getQuantity());
 		return cr.save(cart);
 	}
 
@@ -51,6 +52,7 @@ public class CartService {
 		int current = cart.getQuantity();
 		current++;
 		cart.setQuantity(current);
+		is.lowerStock(item, 1);
 		return cr.save(cart);
 		
 	}
@@ -63,6 +65,7 @@ public class CartService {
 			cr.deleteById(cart.getCart_id());
 		} else {
 			cart.setQuantity(current);
+			is.raiseStock(item, 1);
 			cr.save(cart);
 		}
 		
@@ -72,6 +75,13 @@ public class CartService {
 	
 	public void removeFromCart(int cust, int item) {
 		Cart cart = cr.findByCustomerAndItemId(cust,item);		
+		is.raiseStock(item, cart.getQuantity());
 		cr.deleteById(cart.getCart_id());
+	}
+	
+	@Transactional
+	public void deleteAll(int cust) {
+		cr.deleteAllByCustomer(cust);
+		
 	}
 }
