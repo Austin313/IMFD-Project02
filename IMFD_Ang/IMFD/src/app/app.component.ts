@@ -15,7 +15,7 @@ import { CheckoutService } from './checkout.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'IMFD';
+  title = 'IMFD app is running!';
   public customer: Customer;
   public order: Order = {
     subtotal: 0,

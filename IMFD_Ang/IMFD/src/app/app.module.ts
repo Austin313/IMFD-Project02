@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,8 +11,11 @@ import { ReviewComponent } from './components/review/review.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
-
-
+import { CartService } from './cart.service';
+import { ItemService } from './item.service';
+import { LoginService } from './login.service';
+import { CheckoutService } from './checkout.service';
+import { CustomerService } from './customer.service';
 
 @NgModule({
   declarations: [
@@ -23,15 +26,15 @@ import { AboutComponent } from './components/about/about.component';
     ReviewComponent,
     ShopComponent,
     AboutComponent,
-
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [
+    CartService,
+    ItemService,
+    LoginService,
+    CheckoutService,
+    CustomerService,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
