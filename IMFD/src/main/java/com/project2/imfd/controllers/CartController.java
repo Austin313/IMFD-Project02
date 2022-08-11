@@ -75,6 +75,13 @@ public class CartController {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 	
+	@DeleteMapping("/clear")
+	public ResponseEntity<?> clearCart(@RequestParam int cust){
+		cart.deleteAll(cust);
+		return new ResponseEntity<>(HttpStatus.OK);
+		
+	}
+	
 	
 	
 }

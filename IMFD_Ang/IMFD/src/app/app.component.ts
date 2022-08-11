@@ -6,6 +6,8 @@ import { CustomerService } from './customer.service';
 import { ThisReceiver } from '@angular/compiler';
 import { CartService } from './cart.service';
 import { Cart } from './cart';
+import { Order } from './order';
+import { CheckoutService } from './checkout.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,10 @@ import { Cart } from './cart';
 export class AppComponent {
   title = 'IMFD';
   public customer: Customer;
+  public order: Order = {
+    subtotal: 0,
+    total: 0,
+  };
 
   public uname: string = '';
   public pass: string = '';
@@ -40,7 +46,8 @@ export class AppComponent {
   constructor(
     private login: LoginService,
     private cust: CustomerService,
-    private cart: CartService
+    private cart: CartService,
+    private check: CheckoutService
   ) {}
 
   //total method
@@ -179,6 +186,10 @@ export class AppComponent {
     this.reg = false;
   }
 
+  cancelReg(): any {
+    this.reg = false;
+  }
+
   //Cart
 
   loadCart(): any {
@@ -222,6 +233,20 @@ export class AppComponent {
     });
     this.cart.decreaseQ(cust[index], item[index]).subscribe(() => {
       console.log('took away 1 to ' + cust);
+    });
+  }
+
+  //Checkout!!!
+
+  checkout(): any {
+    this.order.subtotal = this.total;
+    this.order.total = this.order.subtotal * 1.0825;
+    alert(this.order.subtotal);
+    this.check.checkout(this.order).subscribe((data) => {
+      this.order = data;
+    });
+    this.cart.clearCart(this.customer.customer_id).subscribe(() => {
+      console.log('Clearing cart');
     });
   }
 }

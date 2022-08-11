@@ -1,7 +1,7 @@
 package com.project2.imfd.services;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +43,23 @@ public class ItemService {
 	
 	public Item updateItem(Item item) {
 		return ir.save(item);
+	}
+	
+	public void lowerStock(Integer itemno, int q) {
+		
+		Item item = ir.findById(itemno).orElseThrow(() -> new ProductNotFound("This product is not available"));
+		int currentStock = item.getStock();
+		currentStock -= q;
+		item.setStock(currentStock);
+		
+	}
+	public void raiseStock(Integer itemno, int q) {
+		
+		Item item = ir.findById(itemno).orElseThrow(() -> new ProductNotFound("This product is not available"));
+		int currentStock = item.getStock();
+		currentStock += q;
+		item.setStock(currentStock);
+		
 	}
 	
 	

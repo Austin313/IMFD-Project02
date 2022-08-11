@@ -62,7 +62,7 @@
       <h3 class="total">
         total : <span>{{ total }}</span>
       </h3>
-      <a href="#" class="btn">checkout cart</a>
+      <a class="btn" (click)="checkout()">checkout cart</a>
     </div>
     <ng-template #plzlogin>
       <h3 style="text-align: center" class="shopping-cart">
@@ -194,6 +194,9 @@
           <div class="btn-block">
             <button type="submit" class="btn" (click)="submitRegister()">
               Submit
+            </button>
+            <button type="submit" class="btn" (click)="cancelReg()">
+              Cancel
             </button>
           </div>
         </form>
