@@ -27,7 +27,9 @@ import com.project2.imfd.repo.CustomerRepository;
 import com.project2.imfd.services.CustomerService;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins="http://localhost:4200")
+
+
 public class CustomerController {
 
 	private CustomerRepository cr;
@@ -73,6 +75,12 @@ public class CustomerController {
 	public ResponseEntity<Customer> getCustomerByUsername(){
 	Customer customer= cs.getCustomerByUsername(username);
 	return new ResponseEntity<>(customer,HttpStatus.OK);
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer ){
+		Customer c = cs.updateCustomer(customer);
+		return new ResponseEntity<>(c,HttpStatus.OK);
 	}
 	
 }

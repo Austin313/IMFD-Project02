@@ -1,24 +1,26 @@
 <div class="page">
-    
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>home</title>
 
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <script src="../js/script.js"></script>
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="app.component.css">
-
-</head>
+    <link rel="stylesheet" href="app.component.css" />
+  </head>
   <!-- header section starts  -->
 
-<header class="header">
+  <header class="header">
+    <a routerLink="/home" class="logo">
+      <i class="fas fa-shopping-basket"></i> FoodKart</a
+    >
 
   <a routerLink="/home" class="logo"> <i class="fas fa-shopping-basket"></i> FoodKart</a>
 
@@ -42,18 +44,21 @@
 
   <form action="" class="search-form">
       <input type="search" placeholder="search here..." id="search-box">
-      <label for="search-box" class="fas fa-search"></label>
-  </form>
 
-  <div *ngIf="isLoggedIn else plzlogin" class="shopping-cart">
-      <div *ngFor="let c of carts;let ind=index" class="box">
-          <i class="fas fa-times" (click)="removeCart(ind)"></i>
-          <div class="content">
-              <h3>{{c.itemName}}</h3>
-              <span class="quantity">{{c.quantity}}</span>
-              <span class="multiply">x</span>
-              <span class="price">{{c.itemPrice}}</span>
-          </div>
+      <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+    <div *ngIf="isLoggedIn; else plzlogin" class="shopping-cart">
+      <div *ngFor="let c of carts; let ind = index" class="box">
+        <i class="fas fa-plus" type="submit" (click)="increaseQ(ind)"></i>
+        <i class="fas fa-minus" type="submit" (click)="decreaseQ(ind)"></i>
+        <i class="fas fa-times" type="submit" (click)="removeCart(ind)"></i>
+        <div class="content">
+          <h3>{{ c.itemName }}</h3>
+          <span class="quantity">{{ c.quantity }}</span>
+          <span class="multiply">x</span>
+          <span class="price">{{ c.itemPrice }}</span>
+        </div>
       </div>
       
       <h3 class="total"> total : <span>{{total}}</span> </h3>
@@ -110,8 +115,16 @@
             <div class="formbasic" style="display: flex;"><label for="password" >Enter Password</label>
            <input type="text" name="password" id="name" [(ngModel)]="newCustomer.password" required></div>
 
-           <div class="formbasic" style="display: flex;"><label for="phoneno" >Enter Phone</label>
-            <input type="text" name="phoneno" id="name" [(ngModel)]="newCustomer.phoneno" required></div>
+          <div class="formbasic" style="display: flex">
+            <label for="username"> Enter New Username</label>
+            <input
+              type="text"
+              name="username"
+              id="name"
+              required
+              [(ngModel)]="newCustomer.username"
+            />
+          </div>
 
             <div class="formbasic" style="display: flex;"><label for="st_address" >Enter Street Address</label>
             <input type="text" name="st_address" id="name"[(ngModel)]="newCustomer.address"></div>  
@@ -122,18 +135,40 @@
     </form>
   </div>
   </ng-template>
-  
- 
-  
-
-
  
 
-</header>
+          <div class="formbasic" style="display: flex">
+            <label for="phoneno">Enter Phone</label>
+            <input
+              type="text"
+              name="phoneno"
+              id="name"
+              [(ngModel)]="newCustomer.phoneno"
+              required
+            />
+          </div>
 
+          <div class="formbasic" style="display: flex">
+            <label for="st_address">Enter Street Address</label>
+            <input
+              type="text"
+              name="st_address"
+              id="name"
+              [(ngModel)]="newCustomer.address"
+            />
+          </div>
 
-
-
-
-<router-outlet></router-outlet>
+          <div class="btn-block">
+            <button type="submit" class="btn" (click)="submitRegister()">
+              Submit
+            </button>
+            <button type="submit" class="btn" (click)="cancelReg()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+  </header>
+  <router-outlet></router-outlet>
 </div>

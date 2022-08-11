@@ -38,7 +38,7 @@ import lombok.ToString;
 		private double subtotal;
 		private double tax = 8.25;
 		private double total = subtotal * 1.825;
-		private String employee;
+		private String employee = "Not Assigned";
 		@CreationTimestamp
 		@Column(updatable=false)
 		private LocalDateTime createdAt;
