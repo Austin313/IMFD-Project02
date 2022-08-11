@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,6 +70,12 @@ public class CustomerController {
 	public ResponseEntity<Customer> getCustomerByUsername(){
 	Customer customer= cs.getCustomerByUsername(username);
 	return new ResponseEntity<>(customer,HttpStatus.OK);
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer ){
+		Customer c = cs.updateCustomer(customer);
+		return new ResponseEntity<>(c,HttpStatus.OK);
 	}
 	
 }
