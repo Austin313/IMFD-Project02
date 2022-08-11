@@ -11,6 +11,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
+import { UpdateComponent } from './update/update.component';
 import { CartService } from './cart.service';
 import { ItemService } from './item.service';
 import { LoginService } from './login.service';
@@ -26,6 +27,7 @@ import { CustomerService } from './customer.service';
     ReviewComponent,
     ShopComponent,
     AboutComponent,
+    UpdateComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

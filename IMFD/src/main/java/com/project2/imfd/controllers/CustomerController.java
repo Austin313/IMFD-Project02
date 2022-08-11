@@ -29,6 +29,7 @@ import com.project2.imfd.services.CustomerService;
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
 
+
 public class CustomerController {
 
 	private CustomerRepository cr;
@@ -51,7 +52,11 @@ public class CustomerController {
 		cr.save(customer);
 	}
 	
-	
+	@PutMapping("/update")
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+		Customer c = cs.updateCustomer(customer);
+		return new ResponseEntity<>(c,HttpStatus.OK);
+	}
 
 	@GetMapping("/login")
     public ResponseEntity<Customer> login(@RequestParam String uname, @RequestParam String pass) {

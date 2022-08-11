@@ -9,6 +9,7 @@ import { Cart } from './cart';
 import { Order } from './order';
 import { CheckoutService } from './checkout.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -212,6 +213,12 @@ export class AppComponent {
     });
   }
 
+
+  updateLink():void{
+  
+  this.router.navigate(['/update']);
+  }
+
   increaseQ(index: number): any {
     const cust = this.carts.map((c) => {
       return c.customer;
@@ -223,6 +230,7 @@ export class AppComponent {
       console.log('added 1 to ' + cust);
     });
   }
+
 
   decreaseQ(index: number): any {
     const cust = this.carts.map((c) => {

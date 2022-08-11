@@ -28,4 +28,9 @@ export class CustomerService {
   addCustomer(customer:Customer): Observable<Customer>{
       return this.http.post<Customer>(this.baseurl+"customer", customer)
     }
+
+  updateCustomer( customer:Customer): Observable<Object>{
+      return this.http.put(this.baseurl+"update", customer)
+    }
+
 }
