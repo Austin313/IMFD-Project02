@@ -1,69 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update</title>
 
     <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="update.component.css">
-
-</head>
-<body>
-<div class="heading">
-    <h1>Update Profile</h1>
-    <p> <a href="home.html">home >></a> Update </p>
-</div>
-
-
+    <link rel="stylesheet" href="update.component.css" />
+  </head>
+  <body>
+    <div class="heading">
+      <h1>Update Profile</h1>
+      <p><a href="home.html">home >></a> Update</p>
+    </div>
 
     <div>
-    <form class="login-form">
+      <form class="login-form">
         <h3>Update!</h3>
-        <div style="display: flex;" class="form-nam">
-            <label for="name" >Name</label><br>
-            <input type="text" name="first_name" id="name1" placeholder="First Name" required [(ngModel)]="u_cust.firstname"><br/>
-            <input type="text" name="last_name" id="name2" placeholder="Last Name" required [(ngModel)]="u_cust.lastname">
-              </div>
-      
-            <div class="formbasic" style="display: flex;"><label for="username"> Enter New Username</label>
-            <input type="text" name="username" id="name3" required [(ngModel)]="u_cust.username"></div>
-             
-            <div class="formbasic" style="display: flex;"><label for="password" >Enter Password</label>
-           <input type="text" name="password" id="name4" [(ngModel)]="u_cust.password" required></div>
+        <div style="display: flex" class="form-nam">
+          <label for="name">Name</label><br />
+          <input
+            style="margin-left: 7.8em"
+            type="text"
+            name="first_name"
+            id="name1"
+            placeholder="First Name"
+            required
+            [(ngModel)]="u_cust.firstname"
+          /><br />
+          <input
+            style="margin-left: 5em"
+            type="text"
+            name="last_name"
+            id="name2"
+            placeholder="Last Name"
+            required
+            [(ngModel)]="u_cust.lastname"
+          />
+        </div>
 
-           <div class="formbasic" style="display: flex;"><label for="phoneno" >Enter Phone</label>
-            <input type="text" name="phoneno" id="name5" [(ngModel)]="u_cust.phoneno" required></div>
+        <div class="formbasic" style="display: flex">
+          <label for="username"> Enter New Username</label>
+          <input
+            style="margin-left: 0.5em"
+            type="text"
+            name="username"
+            placeholder="username"
+            id="name3"
+            required
+            [(ngModel)]="u_cust.username"
+          />
+        </div>
 
-            <div class="formbasic" style="display: flex;"><label for="st_address" >Enter Street Address</label>
-            <input type="text" name="st_address" id="name6"[(ngModel)]="u_cust.address"></div>  
-         
-          <div class="btn-block">
-              <button type="submit" class="btn" (click)="submitUpdate()">Submit</button>
-            </div>
-    </form>
-  </div>
+        <div class="formbasic" style="display: flex">
+          <label for="password">Enter Password</label>
+          <input
+            style="margin-left: 3.3em"
+            type="text"
+            name="password"
+            placeholder="password"
+            id="name4"
+            [(ngModel)]="u_cust.password"
+            required
+          />
+        </div>
 
+        <div class="formbasic" style="display: flex">
+          <label for="phoneno">Enter Phone</label>
+          <input
+            style="margin-left: 5em"
+            type="text"
+            placeholder="phone"
+            name="phoneno"
+            id="name5"
+            [(ngModel)]="u_cust.phoneno"
+            required
+          />
+        </div>
 
+        <div class="formbasic" style="display: flex">
+          <label for="st_address">Enter Street Address</label>
+          <input
+            placeholder="address"
+            style="margin-left: 0.8em"
+            type="text"
+            name="st_address"
+            id="name6"
+            [(ngModel)]="u_cust.address"
+          />
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- footer section ends -->
-</body>
+        <div class="btn-block">
+          <button
+            type="submit"
+            style="margin-left: 20em"
+            class="btn"
+            (click)="submitUpdate()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>

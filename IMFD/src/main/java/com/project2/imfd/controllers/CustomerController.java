@@ -47,6 +47,10 @@ public class CustomerController {
 		this.cs = cs;
 	}
 	
+	public CustomerController() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@PostMapping("/customer")
 	public void addCustomer(@RequestBody Customer customer) {
 		cr.save(customer);

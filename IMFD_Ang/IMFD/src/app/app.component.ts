@@ -247,7 +247,6 @@ export class AppComponent {
   checkout(): any {
     this.order.subtotal = this.total;
     this.order.total = this.order.subtotal * 1.0825;
-    alert(this.order.subtotal);
     this.check.checkout(this.order).subscribe((data) => {
       this.order = data;
     });

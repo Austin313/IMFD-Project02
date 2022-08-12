@@ -32,7 +32,6 @@ export class CartService {
 
   increaseQ(cust: number, item: number): Observable<any> {
     let params = new HttpParams().set('cust', cust).set('item', item);
-    alert(cust + ' ' + item);
     return this.http.delete<any>(this.baseurl + 'cart/increase', {
       params: params,
     });

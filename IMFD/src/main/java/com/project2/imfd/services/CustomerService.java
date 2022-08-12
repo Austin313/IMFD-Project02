@@ -23,6 +23,12 @@ public class CustomerService {
 	}
 
 	
+	public CustomerService() {
+		this.cr = null;
+		
+	}
+
+
 	public boolean login(String uname, String pass) {
 		boolean auth=false;
 		Customer c = cr.findByusername(uname).orElseThrow(()-> new CustomerNotFound("Customer username: "+uname+" was not found"));

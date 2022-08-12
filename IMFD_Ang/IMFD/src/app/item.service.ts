@@ -6,25 +6,23 @@ import { Item } from './item';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ItemService {
-
-  baseurl= environment.backendUrl;
-  constructor(private http:HttpClient) { }
+  baseurl = environment.backendUrl;
+  constructor(private http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':'application/json'
-    })
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  GetItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.baseurl + 'items');
   }
 
-  GetItems():Observable<Item[]>{
-    return this.http.get<Item[]>(this.baseurl+"items")
-  }
-
-  GetItem(id:number):Observable<Item>{
-    alert(id)
-    return this.http.get<Item>(this.baseurl+"items/"+id)
+  GetItem(id: number): Observable<Item> {
+    return this.http.get<Item>(this.baseurl + 'items/' + id);
   }
 }
