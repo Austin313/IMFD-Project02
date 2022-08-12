@@ -1,4 +1,7 @@
 # IMFD-Project02
+## Description
+E-Commerce App for and online store  grocery FoodKart for selling food online and delivery to customer front door.
+===========================================================================================================
 Programs needed: DBEAVER, STS with SPRINGBOOT CONFIURATION, Node.js, and at least Angular 13.2.7
 Enviorment Variables to be set up: DB_Name, DB_pass, DB_URL, DB_USER
 General LOGIN info Mgilson, pass123.
